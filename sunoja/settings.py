@@ -17,8 +17,8 @@ import django_heroku
 from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -32,9 +32,9 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 ALLOWED_HOSTS = ["*"]
 
 cloudinary.config(
-  cloud_name = os.environ.get("CLOUD_NAME", default=get_random_secret_key()),
-  api_key = os.environ.get("API_KEY", default=get_random_secret_key()),
-  api_secret = os.environ.get("API_SECRET", default=get_random_secret_key())
+  cloud_name = os.environ.get("CLOUD_NAME"),
+  api_key = os.environ.get("API_KEY"),
+  api_secret = os.environ.get("API_SECRET")
 )
 
 # Application definition
