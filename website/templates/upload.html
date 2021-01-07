@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Upload</title>
+    <link rel="stylesheet" href="{% static 'info_edit.css' %}">
+  </head>
+  <body>
+    <div id='backend_upload' class ="center">
+      <p>Lataa tiedostot tästä.</p>
+     <form action="../upload/" method="post"
+           enctype="multipart/form-data">
+       {% csrf_token %}
+       {{ backend_form }}
+       <input type="submit" value="Upload">
+     </form>
+   </div>
+  </body>
+</html>

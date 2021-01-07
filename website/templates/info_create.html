@@ -1,0 +1,26 @@
+{% load cloudinary %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'info_edit.css' %}">
+    <title>Edit Info</title>
+  </head>
+  <body>
+    <form method="POST"> {% csrf_token %}
+      {{ form.as_p}}
+      <input type="submit" value="Tallenna info">
+    </form>
+    <a href="{% url 'logout' %}" > <button class="margin-a" type="button">Poistu editointi tilasta</button> </a>
+    <br>
+    <a href="/upload"><button class="margin-a" type="button">Lisää kuva</button></a>
+    <hr>
+    {% for i in object_list%}
+    <form class="" action="../delete/{{ i.id }}" method="POST"> {% csrf_token %}
+      <img src="{{ i.image.url }}"  width="130" height="100">
+      <input type="submit" value="Poista kuva">
+    </form>
+    {% endfor %}
+  </body>
+</html>

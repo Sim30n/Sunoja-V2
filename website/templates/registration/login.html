@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% if forms.errors %}
+    <p>Jotain meni pieleen.</p>
+    {% endif %}
+    {% if next %}
+    <p>Kirjaudu sisään.</p>
+    {% endif %}
+    <form action="{% url 'login' %}" method="post"> {% csrf_token %}
+      <p>Käyttäjänimi: {{ form.username }}</p>
+      <p>Salasana: {{ form.password }}</p>
+      <p><input type="submit" name="next" value="login"></p>
+      {% if next %}
+      <input type="hidden" name="next" value="../..{{ next }}">
+      {% else %}
+      <input type="hidden" name="next" value="{{ next }}">
+      {% endif %}
+    </form>
+  </body>
+</html>
