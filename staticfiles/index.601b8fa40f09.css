@@ -1,0 +1,20 @@
+@media (min-width: 400px) and (max-width: 992px) {
+body{
+  font-size:220%;
+}
+}
+
+body {
+  background: #323214;
+}
+
+
+#jumbo {
+background-color: #323214;
+}
+
+#logo {
+max-width:111px;
+height:auto;
+padding-right:10px;
+}
